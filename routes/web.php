@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('alertbox', function(){
+Route::get('/alertbox', function(){
 	return view('event');
 });
 
-Route::get('event', function(){
+Route::get('/event', function(){
 	event(new eventTrigger());
 });
