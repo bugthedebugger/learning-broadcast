@@ -9,6 +9,7 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Http\Request;
 
 class eventTrigger implements ShouldBroadcast
 {
@@ -19,9 +20,12 @@ class eventTrigger implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct()
+
+    private $message;
+
+    public function __construct($message)
     {
-        //
+        $this->message = $message;
     }
 
     /**
@@ -29,8 +33,15 @@ class eventTrigger implements ShouldBroadcast
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastOn()
+
+    public function broadcastWith()
     {
+
+        return $this->message;
+    }
+
+    public function broadcastOn()
+    {   
         return new Channel('prayush');
     }
 }

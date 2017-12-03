@@ -991,9 +991,11 @@ Vue.component('example-component', __webpack_require__(40));
 
 var app = new Vue({
   el: '#app',
-  created: function created() {
-    Echo.channel('prayush').listen('eventTrigger', function (e) {
-      alert('This has been triggered.');
+  created: function created(e) {
+    Echo.channel('prayush').listen('eventTrigger', function (data) {
+      console.log("Recieved:");
+      console.log(data);
+      $('ul').append("<li>"+data.user+" says: "+data.message+"</li>");
     });
   }
 });

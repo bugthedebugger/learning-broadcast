@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,8 +11,6 @@
 |
 */
 
-use App\Events\eventTrigger;
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,6 +19,4 @@ Route::get('/alertbox', function(){
 	return view('event');
 });
 
-Route::get('/event', function(){
-	event(new eventTrigger());
-});
+Route::get('/event', 'EventController@eventHandler')->name('event.handler');

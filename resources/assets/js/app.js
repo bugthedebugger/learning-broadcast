@@ -19,10 +19,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 
 const app = new Vue({
     el: '#app',
+
     created(){
     	Echo.channel('prayush')
     		.listen('eventTrigger', (e) => {
-    			alert('This has been triggered.');
+    			alert('This has been triggered. lol');
     		})
     }
 });
